@@ -1,17 +1,28 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicione os serviços necessários para os controladores
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
+builder.Services.AddSession();
 
 var app = builder.Build();
 
+app.UseSession();
 app.UseRouting();
 
-// Mapeia os controladores
-app.MapControllers();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
-// Executa a aplicação na porta 5000
+app.MapControllerRoute(
+    name: "register",
+    pattern: "Register",
+    defaults: new { controller = "Register", action = "GetRegisterPage" });
+
+app.MapControllerRoute(
+    name: "recover",
+    pattern: "Recover",
+    defaults: new { controller = "Recover", action = "Recover" });
+
 app.Run("http://localhost:5000");

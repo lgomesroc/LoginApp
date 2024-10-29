@@ -3,18 +3,39 @@ using Microsoft.AspNetCore.Mvc;
 namespace loginapp.Controllers
 {
     [Route("Login")]
-    [ApiController]
-    public class LoginController : ControllerBase
+    public class LoginController : Controller
     {
-        [HttpGet]
-        public IActionResult GetLoginPage()
+        [HttpGet("")]
+        public IActionResult Login()
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Login.html");
-            if (!System.IO.File.Exists(filePath))
+            return View("Login");
+        }
+
+        [HttpPost("Authenticate")]
+        public IActionResult Authenticate(string username, string password)
+        {
+            // Lógica de autenticação
+            if (IsValidUser(username, password))
             {
-                return NotFound();
+                // Redireciona para a página inicial após autenticação bem-sucedida
+                return RedirectToAction("Index", "Home");
             }
-            return PhysicalFile(filePath, "text/html");
+
+            // Se a autenticação falhar, você pode retornar uma mensagem de erro
+            ViewBag.ErrorMessage = "Usuário ou senha inválidos.";
+            return View("Login");
+        }
+
+        [HttpGet("Recover")]
+        public IActionResult RedirectToRecover()
+        {
+            return RedirectToAction("Recover", "Recover");
+        }
+
+        private bool IsValidUser(string username, string password)
+        {
+            // Lógica de validação de usuário
+            return username == "admin" && password == "password";
         }
     }
 }

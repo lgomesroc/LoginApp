@@ -1,0 +1,173 @@
+# Documentação do Projeto: Sistema de Login em .NET 8.0
+Sumário
+
+    Introdução
+    Tipo de Projeto
+    Comando de Criação do Projeto
+    Estrutura do Projeto
+    Requisitos
+    Configuração do Ambiente
+    Rotas da Aplicação
+    Arquivos Principais
+    Como Executar o Projeto
+    Histórico de Alterações
+    Considerações Finais
+
+Introdução
+
+Este projeto consiste em um sistema de login simples desenvolvido com .NET 8.0. A aplicação possui duas principais funcionalidades: criação de conta e login de usuário, com interfaces para interação através de páginas HTML.
+Tipo de Projeto
+
+Este projeto é uma Web API que serve páginas HTML para o front-end, utilizando .NET 8.0. A estrutura é voltada para aplicações web, onde as interações são feitas através de rotas definidas em controladores.
+Comando de Criação do Projeto
+
+Para criar o projeto, o seguinte comando foi utilizado no terminal:
+
+bash
+
+dotnet new web -n loginapp
+
+Esse comando cria uma nova aplicação web chamada "loginapp" utilizando a template padrão do .NET.
+Estrutura do Projeto
+
+A estrutura básica do projeto é a seguinte:
+
+loginapp/
+├── Controllers/
+│   └── LoginController.cs
+├── Views/
+│   ├── Login.html
+│   └── Register.html
+└── Program.cs
+
+Requisitos
+
+    .NET 8.0
+    Visual Studio Code ou qualquer editor de código de sua preferência
+    Navegador para acessar as páginas HTML
+
+Configuração do Ambiente
+
+    Instalação do .NET: Certifique-se de ter o .NET 8.0 instalado em seu sistema.
+    Editor de Código: Use o Visual Studio Code ou outro editor para desenvolver e testar o código.
+    Serviço de Hosting: O projeto deve ser executado em um servidor local, como o Kestrel, que já vem com o .NET.
+
+Rotas da Aplicação
+
+A aplicação disponibiliza as seguintes rotas:
+
+    Login: http://localhost:5000/Login
+    Registrar: http://localhost:5000/Register
+
+Arquivos Principais
+Program.cs
+
+csharp
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Adiciona serviços ao contêiner.
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.UseRouting();
+
+app.MapControllers();
+
+app.Run("http://localhost:5000");
+
+LoginController.cs
+
+csharp
+
+using Microsoft.AspNetCore.Mvc;
+
+namespace YourNamespace.Controllers
+{
+    [Route("[controller]")]
+    public class LoginController : Controller
+    {
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return PhysicalFile("Views/Login.html", "text/html");
+        }
+
+        [HttpGet("Register")]
+        public IActionResult Register()
+        {
+            return PhysicalFile("Views/Register.html", "text/html");
+        }
+    }
+}
+
+Login.html
+
+html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        /* Adicione aqui os estilos conforme necessário */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Senha" required>
+        <button class="login-button">Entrar</button>
+        <p>Não tem uma conta? <a href="/Register">Criar conta</a></p>
+    </div>
+</body>
+</html>
+
+Register.html
+
+html
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta</title>
+    <style>
+        /* Adicione aqui os estilos conforme necessário */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Criar Conta</h2>
+        <input type="text" placeholder="Nome" required>
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Senha" required>
+        <input type="password" placeholder="Confirmar Senha" required>
+        <div class="button-container">
+            <button class="create-button">Criar</button>
+            <button class="cancel-button">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>
+
+Como Executar o Projeto
+
+    Navegue até o diretório do projeto no terminal.
+    Execute o comando dotnet run.
+    Abra um navegador e acesse http://localhost:5000/Login ou http://localhost:5000/Register para ver as respectivas telas.
+
+Histórico de Alterações
+
+    2024-10-28: Criação do projeto básico como uma Web API, incluindo a estrutura inicial e páginas de login e registro.
+    2024-10-29: Implementação do controlador LoginController para gerenciar as rotas de Login e Registro.
+    2024-10-29: Ajustes nas páginas HTML para melhorar a interface do usuário, centralizando os formulários e atualizando o layout dos botões.
+    2024-10-29: Adição de documentação inicial, incluindo detalhes sobre a estrutura do projeto, tipo de projeto e requisitos.

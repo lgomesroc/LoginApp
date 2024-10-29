@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Recuperar Conta";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Login App</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
+        .recover-container { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; width: 300px; }
+        .recover-container input { display: block; width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .recover-container button { width: 48%; padding: 10px; margin: 5px 1%; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .recover-container button:hover { background-color: #0056b3; }
+        .links { margin-top: 15px; text-align: center; }
+        .links a { color: #007bff; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="recover-container">
+        <h2>Recuperar Conta</h2>
+        <form action="/Recover" method="post">
+            <input type="text" name="username" placeholder="Usuário" required />
+            <input type="password" name="newPassword" placeholder="Nova Senha" required />
+            <input type="password" name="confirmPassword" placeholder="Confirmar Nova Senha" required />
+            <div>
+                <button type="submit">OK</button>
+                <button type="button" onclick="window.location.href='/Login'">Cancelar</button> <!-- Link atualizado -->
+            </div>
+        </form>
+        <div class="links">
+            <p><a href="/Register">Criar uma conta</a></p>
+        </div>
+    </div>
+</body>
+</html>

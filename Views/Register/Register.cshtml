@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Criar Conta";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Login App</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f0f0f0; margin: 0; }
+        .register-container { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); text-align: center; width: 300px; }
+        .register-container input { display: block; width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .register-container button { width: 48%; padding: 10px; margin: 5px 1%; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .register-container button:hover { background-color: #0056b3; }
+        .links { margin-top: 15px; text-align: center; }
+        .links a { color: #007bff; text-decoration: none; }
+        .links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Criar Conta</h2>
+        <form action="/Register/Create" method="post">
+            <input type="text" name="nome" placeholder="Nome" required />
+            <input type="text" name="username" placeholder="Usuário" required />
+            <input type="password" name="password" placeholder="Senha" required />
+            <input type="password" name="confirmPassword" placeholder="Confirmar Senha" required />
+            <div>
+                <button type="submit">Criar</button>
+                <button type="button" onclick="window.location.href='/Login'">Cancelar</button> <!-- Link atualizado -->
+            </div>
+        </form>
+        <div class="links">
+            <p><a href="/Recover">Esqueceu sua senha? Recupere sua conta aqui.</a></p>
+        </div>
+    </div>
+</body>
+</html>

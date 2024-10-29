@@ -3,18 +3,33 @@ using Microsoft.AspNetCore.Mvc;
 namespace loginapp.Controllers
 {
     [Route("Register")]
-    [ApiController]
-    public class RegisterController : ControllerBase
+    public class RegisterController : Controller
     {
-        [HttpGet]
+        [HttpGet("")]
         public IActionResult GetRegisterPage()
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Register.html");
-            if (!System.IO.File.Exists(filePath))
+            return View("Register");
+        }
+
+        [HttpPost("Create")]
+        public IActionResult Create(string nome, string username, string password, string confirmPassword)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmPassword))
             {
-                return NotFound();
+                ModelState.AddModelError("", "Todos os campos são obrigatórios.");
+                return View("Register");
             }
-            return PhysicalFile(filePath, "text/html");
+            if (password != confirmPassword)
+            {
+                ModelState.AddModelError("", "As senhas não coincidem.");
+                return View("Register");
+            }
+
+            // Adicione aqui a lógica para criar o usuário
+            // Exemplo: salvar no banco de dados
+
+            // Redirecionar para a página de login após a criação da conta
+            return RedirectToAction("Login", "Login");
         }
     }
 }

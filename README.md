@@ -41,10 +41,16 @@ A estrutura básica do projeto é a seguinte:
 ```
 loginapp/
 ├── Controllers/
-│   └── LoginController.cs
+│   ├── LoginController.cs
+│   ├── RecoverController.cs
+│   └── RegisterController.cs
 ├── Views/
-│   ├── Login.html
-│   └── Register.html
+│   ├── Login/
+│   │   └── Login.cshtml
+│   ├── Recover/
+│   │   └── Recover.cshtml
+│   └── Register/
+│       └── Register.cshtml
 └── Program.cs
 ```
 
@@ -65,7 +71,8 @@ loginapp/
 A aplicação disponibiliza as seguintes rotas:
 
 - **Login**: [http://localhost:5000/Login](http://localhost:5000/Login)  
-- **Registrar**: [http://localhost:5000/Register](http://localhost:5000/Register)  
+- **Registrar**: [http://localhost:5000/Register](http://localhost:5000/Register) 
+- **Recuperar Conta**: [http://localhost:5000/Recover](http://localhost:5000/Recover)
 
 ## Arquivos Principais
 
@@ -82,7 +89,8 @@ Os códigos estão no repositório.
 
 Abra um navegador e acesse:  
 - [http://localhost:5000/Login](http://localhost:5000/Login)  
-- [http://localhost:5000/Register](http://localhost:5000/Register)  
+- [http://localhost:5000/Register](http://localhost:5000/Register) 
+- [http://localhost:5000/Recover](http://localhost:5000/Recover)
 
 para ver as respectivas telas.
 
@@ -91,9 +99,13 @@ para ver as respectivas telas.
 ## Histórico de Alterações
 
 - **2024-10-28**: Criação do projeto básico como uma Web API, incluindo a estrutura inicial e páginas de login e registro.  
-- **2024-10-29**: Implementação do controlador `LoginController` para gerenciar as rotas de Login e Registro.  
-- **2024-10-29**: Ajustes nas páginas HTML para melhorar a interface do usuário, centralizando os formulários e atualizando o layout dos botões.  
-- **2024-10-29**: Adição de documentação inicial, incluindo detalhes sobre a estrutura do projeto, tipo de projeto e requisitos.
+- **2024-10-28**: Implementação do controlador `LoginController` para gerenciar as rotas de Login e Registro.  
+- **2024-10-28**: Ajustes nas páginas HTML para melhorar a interface do usuário, centralizando os formulários e atualizando o layout dos botões.  
+- **2024-10-28**: Adição de documentação inicial, incluindo detalhes sobre a estrutura do projeto, tipo de projeto e requisitos.
+- **2024-10-29**: Correção de erros na renderização das páginas de registro e recuperação.
+- **2024-10-29**: Ajuste de rotas no Program.cs para garantir que as páginas sejam carregadas corretamente.
+- **2024-10-29**: Atualização dos links de navegação para garantir que direcionam corretamente para as páginas de login, registro e recuperação.
+- **2024-10-29**: Adição de botões "Cancelar" para redirecionar para a página de login nas páginas de registro e recuperação.
 
 ---
 
