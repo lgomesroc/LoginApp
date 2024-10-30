@@ -18,7 +18,7 @@
 
 ## Introdução
 
-Este projeto consiste em um sistema de login simples desenvolvido com .NET 8.0. A aplicação possui duas principais funcionalidades: criação de conta e login de usuário, com interfaces para interação através de páginas HTML.
+Este projeto consiste em um sistema de login simples desenvolvido com .NET 8.0. A aplicação possui três principais funcionalidades: criação de conta, recuperação de conta e login de usuário, com interfaces para interação através de páginas HTML.
 
 ## Tipo de Projeto
 
@@ -56,9 +56,9 @@ loginapp/
 
 ## Requisitos
 
-- .NET 8.0  
-- Visual Studio Code ou qualquer editor de código de sua preferência  
-- Navegador para acessar as páginas HTML  
+- .NET 8.0;
+- Visual Studio Code ou qualquer editor de código de sua preferência;
+- Navegador para acessar as páginas HTML.
 
 ## Configuração do Ambiente
 
@@ -76,7 +76,7 @@ A aplicação disponibiliza as seguintes rotas:
 
 ## Arquivos Principais
 
-### Program.cs, LoginController.cs, Login.html, RegisterController.cs e Register.html.
+### Program.cs, LoginController.cs, Login.cshtml, RegisterController.cs, Register.cshtml, RecoverController,cs e Recover.cshtml.
 Os códigos estão no repositório.
 
 ## Como Executar o Projeto
@@ -112,3 +112,5 @@ para ver as respectivas telas.
 ## Considerações Finais
 
 Este sistema de login é um ponto de partida e pode ser expandido para incluir funcionalidades adicionais, como autenticação real, armazenamento de dados de usuários, etc. A documentação pode ser atualizada à medida que novas funcionalidades forem adicionadas ao projeto.
+
+Este projeto pode ser considerado um template onde não é necessário criar do zero e pode aproveitar esse projeto. Lembrando que os botões OK nas três telas __não foram implementados__ para que se adapte ao projeto que será adicionado. 
